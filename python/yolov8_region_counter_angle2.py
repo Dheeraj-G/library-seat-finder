@@ -15,6 +15,8 @@ from ultralytics.utils.plotting import Annotator, colors
 
 track_history = defaultdict(list)
 
+tableFull = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+
 current_region = None
 counting_regions = [
     {
@@ -148,6 +150,8 @@ def run(
 
         if save_img:
             video_writer.write(frame)
+
+        tableFull[1] = counting_regions[0]["counts"]
 
         for region in counting_regions:  # Reinitialize count for each region
             print(region["counts"])
